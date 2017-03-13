@@ -8,7 +8,12 @@
 
 import Foundation
 
-
+extension Double {
+    func roundTo(places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
 
 class TipCalculator
 {
@@ -23,7 +28,7 @@ class TipCalculator
     {
         var result = Array<Double>();
         for percent in defaultTipPercentages {
-            result.append(percent * multiplier);
+            result.append((percent * multiplier).roundTo(places: 2));
         }
         
         return result;
@@ -37,5 +42,7 @@ class TipCalculator
         let tip = bill * selectedPercentage;
         return tip;
     }
+
+
 }
 

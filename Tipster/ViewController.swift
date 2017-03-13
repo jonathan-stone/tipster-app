@@ -97,17 +97,39 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let appSettings = getSettings();
 
         tipCalculator = getTipCalculator(appSettings: appSettings);
-        let bill = Double(billTextField.text!) ?? 0;
+        let bill = decmialFromCurrencyString(withCurrencyString: billTextField.text!);
         let tip = tipCalculator!.calculateTip(bill: bill, selectedTipIndex: tipPercentControl.selectedSegmentIndex);
 
         let total = bill + tip;
         setCalculatedLabelText(tip: tip, total: total);
     }
 
-    func setCalculatedLabelText(tip: Double, total: Double)
+    func setCalculatedLabelText(tip: Decimal, total: Decimal)
     {
-        tipLabel.text = String(format: "$%.2f", tip);
-        totalLabel.text = String(format: "$%.2f", total);
+        tipLabel.text = toCurrencyFormat(amount: tip);
+        totalLabel.text = toCurrencyFormat(amount: total);
+    }
+
+    func decmialFromCurrencyString(withCurrencyString: String)->Decimal
+    {
+        let formatter = NumberFormatter();
+        if let number = formatter.number(from: withCurrencyString) {
+            return number.decimalValue;
+        }
+
+        return 0;
+    }
+
+    func toCurrencyFormat(amount: Decimal)->String {
+        let formatter = NumberFormatter();
+        formatter.numberStyle = .currency;
+        if let formattedString = formatter.string(from: amount as NSNumber)
+        {
+            return formattedString;
+        }
+
+        return String();
+
     }
 
     func loadSettings()

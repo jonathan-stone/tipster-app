@@ -8,25 +8,33 @@
 
 import Foundation
 
-extension Double {
-    func roundTo(places: Int) -> Double {
-        let divisor = pow(10.0, Double(places))
-        return (self * divisor).rounded() / divisor
+extension Decimal {
+    func roundTo(places: Int16) ->  Decimal {
+        let decnum = NSDecimalNumber(decimal: self);
+        let numConverter = NSDecimalNumberHandler(roundingMode: NSDecimalNumber.RoundingMode.bankers,
+                                                  scale: places,
+                                                  raiseOnExactness: true,
+                                                  raiseOnOverflow: true,
+                                                  raiseOnUnderflow: true,
+                                                  raiseOnDivideByZero: false);
+
+        let rounded = decnum.rounding(accordingToBehavior: numConverter);
+        return rounded as Decimal;
     }
 }
 
 class TipCalculator
 {
-    let defaultTipPercentages = [0.1, 0.15, 0.2];
-    var multiplier: Double!;
+    let defaultTipPercentages: Array<Decimal> = [0.1, 0.15, 0.2];
+    var multiplier: Decimal!;
 
     init(moodMultiplier: Double!) {
-        multiplier = moodMultiplier;
+        multiplier = Decimal(moodMultiplier);
     }
 
-    func makeTipPercentages() ->Array<Double>
+    func makeTipPercentages() ->Array<Decimal>
     {
-        var result = Array<Double>();
+        var result = Array<Decimal>();
         for percent in defaultTipPercentages {
             result.append((percent * multiplier).roundTo(places: 2));
         }
@@ -34,7 +42,7 @@ class TipCalculator
         return result;
     }
 
-    func calculateTip(bill: Double, selectedTipIndex: Int)->Double
+    func calculateTip(bill: Decimal, selectedTipIndex: Int)->Decimal
     {
         let tipPercentages = makeTipPercentages();
         let selectedPercentage = tipPercentages[selectedTipIndex];

@@ -18,7 +18,7 @@ class TipPercentChooser {
         TipPercentChooser.setDisplayedPercentages(tipPercentControl: tipPercentControl, percentages: percentages);
     }
 
-    static func setDisplayedPercentages(tipPercentControl: UISegmentedControl, percentages: Array<Double>)
+    static func setDisplayedPercentages(tipPercentControl: UISegmentedControl, percentages: Array<Decimal>)
     {
         for(index, percent) in percentages.enumerated()
         {
@@ -27,8 +27,8 @@ class TipPercentChooser {
         }
     }
 
-    static func formatPercentAsString(percent: Double)->String {
-        let percentAsInteger = Int(100 * percent);
+    static func formatPercentAsString(percent: Decimal)->String {
+        let percentAsInteger = (100 * percent);
         return String("\(percentAsInteger)%");
     }
 }

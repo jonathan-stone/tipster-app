@@ -12,10 +12,10 @@ In a crappy mood? 10% still too much tip to give out? You can probably calculate
 ![](http://i.imgur.com/L7PRcrD.gif)
 
 ## Developer notes
-Tipster was coded as a quick prototype, so it lacks certain maintainability aspects. Were this a production app, here are some things I'd insist on doing:
+Tipster was coded as a quick prototype, so it lacks certain maintainability aspects. Were this a production app, here are some things I'd be keen to do:
 
 
-* Test-driven development: Test-first coding so that all code is tested all the time.
+* Test-driven development: Test-first coding so that all code is tested all the time. 
 * Better encapsulation: I'd make TipPercentChooser into a component/control instead of a set of static functions.
 * Better encapsulation: I'd separate the tip calculator code from the page nav code more completely.
 * UI: I'd sure make it look a lot nicer.

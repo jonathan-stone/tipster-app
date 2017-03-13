@@ -70,10 +70,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         {
             settings = TipsterSettings();
             loadSettings();
-            tipCalculator = TipCalculator(moodMultiplier: settings!.getSelectedMoodValue());
         }
 
         return settings!;
+    }
+
+    func getTipCalculator(appSettings: TipsterSettings!)->TipCalculator
+    {
+        return TipCalculator(moodMultiplier: appSettings.getSelectedMoodValue());
     }
 
     @IBAction func onTap(_ sender: AnyObject) {
@@ -92,10 +96,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     {
         let appSettings = getSettings();
 
-        let moodMultiplier = appSettings.getSelectedMoodValue();
-        let tipCalculator = TipCalculator(moodMultiplier: moodMultiplier);
+        tipCalculator = getTipCalculator(appSettings: appSettings);
         let bill = Double(billTextField.text!) ?? 0;
-        let tip = tipCalculator.calculateTip(bill: bill, selectedTipIndex: tipPercentControl.selectedSegmentIndex);
+        let tip = tipCalculator!.calculateTip(bill: bill, selectedTipIndex: tipPercentControl.selectedSegmentIndex);
 
         let total = bill + tip;
         setCalculatedLabelText(tip: tip, total: total);

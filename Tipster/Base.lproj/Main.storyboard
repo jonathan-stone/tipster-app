@@ -60,7 +60,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="TF8-h9-1Sh">
-                                <frame key="frameInset" minY="276" width="375" height="29"/>
+                                <frame key="frameInset" minX="16" minY="276" width="343" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="18%"/>

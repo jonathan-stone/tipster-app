@@ -40,6 +40,7 @@ class TipCalculator
         let selectedPercentage = tipPercentages[selectedTipIndex];
 
         let tip = bill * selectedPercentage;
+        print("Calculated tip \(tip) for bill \(bill) with percentage \(selectedPercentage)");
         return tip;
     }
 

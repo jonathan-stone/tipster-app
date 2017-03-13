@@ -33,7 +33,7 @@ In a crappy mood? 10% still too much tip to give out? You can probably calculate
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/WQ41uCG.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/Ad4LQfB.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

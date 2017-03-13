@@ -17,7 +17,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setTitleImage();
         clearBillAmount();
         preventKeyboardAnimations();
-//        showTheKeyboard();
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -12,6 +12,7 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var tipPercentControl: UISegmentedControl!
 
+    @IBOutlet var moodSlider: UISlider!
     var settings: TipsterSettings?;
 
     override func viewDidLoad() {
@@ -30,6 +31,11 @@ class SettingsViewController: UIViewController {
         return settings!;
     }
 
+    @IBAction func onMoodValueChanged(_ sender: UISlider) {
+        saveSettings();
+        TipPercentChooser.updateDisplayedPercentages(tipPercentControl: tipPercentControl, appSettings: settings!);
+    }
+
     @IBAction func onTipPercentageChanged(_ sender: AnyObject) {
         saveSettings();
     }
@@ -38,11 +44,15 @@ class SettingsViewController: UIViewController {
     {
         let appSettings = getSettings();
         appSettings.setSelectedTipIndex(selectedIndex: tipPercentControl.selectedSegmentIndex);
+        appSettings.setSelectedMoodValue(moodValue: Double(moodSlider.value));
     }
 
     func loadSettings()
     {
         let appSettings = getSettings();
         tipPercentControl.selectedSegmentIndex = appSettings.getSelectedTipIndex();
+        moodSlider.value = Float(appSettings.getSelectedMoodValue());
+        TipPercentChooser.updateDisplayedPercentages(tipPercentControl: tipPercentControl, appSettings: appSettings);
+
     }
 }

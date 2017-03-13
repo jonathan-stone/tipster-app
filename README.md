@@ -32,7 +32,6 @@ In a crappy mood? 10% still too much tip to give out? You can probably calculate
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
-![](http://i.imgur.com/WQ41uCG.gif)
 
 <img src='http://i.imgur.com/WQ41uCG.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 

@@ -18,21 +18,14 @@
                                 <frame key="frameInset" minX="16" minY="121" width="124" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.36862745098039218" green="0.10980392156862745" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QC4-MV-xSm">
                                 <frame key="frameInset" minX="16" minY="222" width="124" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sRH-r3-VGH">
-                                <frame key="frameInset" minX="148" minY="355" width="205" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="24"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.36862745099999999" green="0.10980392160000001" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b34-Ls-h96">
@@ -52,13 +45,6 @@
                                     <action selector="onBillAmountChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="dD6-lt-rBp"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You owe:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dua-8L-dsE">
-                                <frame key="frameInset" minX="16" minY="360" width="124" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="TF8-h9-1Sh">
                                 <frame key="frameInset" minX="16" minY="276" width="343" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -67,22 +53,51 @@
                                     <segment title="20%"/>
                                     <segment title="25%"/>
                                 </segments>
+                                <color key="tintColor" red="0.36862745099999999" green="0.10980392160000001" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="onTipPercentageChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="6f7-yK-l8v"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="😡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="brS-Ev-zEk">
+                                <frame key="frameInset" minX="54" minY="302" width="48" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="😄" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F4g-Xc-Iyv">
+                                <frame key="frameInset" minX="277" minY="302" width="48" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sRH-r3-VGH">
+                                <frame key="frameInset" minX="148" minY="394" width="205" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You owe:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dua-8L-dsE">
+                                <frame key="frameInset" minX="16" minY="399" width="124" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="0.36862745098039218" green="0.10980392156862745" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" misplaced="YES" id="bu9-hx-3VG">
-                                <frame key="frameInset" minY="403" width="375" height="11"/>
+                                <frame key="frameInset" minY="442" width="375" height="6"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.94755244760000001" green="0.72208967509999999" blue="0.31818181820000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.36862745098039218" green="0.10980392156862745" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" id="hMY-bT-VfL">
-                                <frame key="frameInset" minY="336" width="375" height="11"/>
+                            <view contentMode="scaleToFill" misplaced="YES" id="JwN-y0-L03">
+                                <frame key="frameInset" minY="380" width="375" height="6"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.94755244760000001" green="0.72208967509999999" blue="0.31818181820000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.10980392160000001" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.99862730503082275" green="0.92386174201965332" blue="0.4530450701713562" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="YdG-AU-dz2" appends="YES" id="kDf-ev-TQW"/>

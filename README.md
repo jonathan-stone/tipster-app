@@ -23,6 +23,7 @@ The following **additional** features are implemented:
 - [x] Custom icon
 - [x] Custom title image on navigation controller
 - [x] Custom launch screen
+- [x] Suppressed the keyboard animation on launch. Keyboard is always there and it was distracting.
 - [x] Added **The Mood Slider**. 
 
 * Are you a very generous person? 20% tip not enough to communicate your blossoming sense of generosity?

@@ -48,8 +48,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 * Tipster was coded as a quick prototype, so it lacks certain maintainability aspects. Were this a production app, here are some things I'd be keen to do:
 
     * Test-driven development: Test-first coding so that all code is tested all the time. 
+    * Better encapsulation: The ViewController.swift file is too large and does too much. Needs to be broken up.  I'd separate the tip calculating code from the page navigation code more completely, and abstract out the concepts of the persistent keyboard and the short-term saving/restoring of the bill amount.
     * Better encapsulation: I'd make TipPercentChooser into a component/control instead of a set of static functions.
-    * Better encapsulation: I'd separate the tip calculating code from the page navigation code more completely.
     * UI: I'd sure make it look a lot nicer.
     * Responsiveness: This thing only works on one screen size.
     * UX: The mood slider can result in the same percentages appearing twice (e.g. 2%, 2%, 3%). Instead of a scale, I'd use predefined sets of percentages for a fixed number of "moods" or personality types (judmental, forgiving, ??).

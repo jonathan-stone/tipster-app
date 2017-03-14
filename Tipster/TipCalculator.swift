@@ -25,15 +25,14 @@ extension Decimal {
 
 class TipCalculator
 {
-    let defaultTipPercentages: Array<Decimal> = [0.1, 0.15, 0.2];
+    let defaultTipPercentages: Array<Decimal> = [0.08, 0.15, 0.25];
     var multiplier: Decimal!;
 
     init(moodMultiplier: Double!) {
         multiplier = Decimal(moodMultiplier);
     }
 
-    func makeTipPercentages() ->Array<Decimal>
-    {
+    func makeTipPercentages() ->Array<Decimal> {
         var result = Array<Decimal>();
         for percent in defaultTipPercentages {
             result.append((percent * multiplier).roundTo(places: 2));
@@ -42,8 +41,7 @@ class TipCalculator
         return result;
     }
 
-    func calculateTip(bill: Decimal, selectedTipIndex: Int)->Decimal
-    {
+    func calculateTip(bill: Decimal, selectedTipIndex: Int)->Decimal {
         let tipPercentages = makeTipPercentages();
         let selectedPercentage = tipPercentages[selectedTipIndex];
 
@@ -51,7 +49,5 @@ class TipCalculator
         print("Calculated tip \(tip) for bill \(bill) with percentage \(selectedPercentage)");
         return tip;
     }
-
-
 }
 

@@ -42,7 +42,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 ### Challenges
-* Rounding: When converting the mood slider value (a double) to percentages (17%/22% etc.), the results didn't land exactly on a whole percentage value. Rounding off for displaying the percent value was straightforward string formatting, but then the Tip amount would not match the displayed percentage; instead of 17%, the calculated percent value would be something like 17.124%. Solved by rounding the percent down to two decimal places, to match what is displayed in the UI. 
+* Rounding: When converting the mood slider value (a double) to percentages (17%/22% etc.), the results didn't land exactly on a whole percentage value. Rounding off for displaying the percent value was straightforward with string formatting, but then the Tip amount would not match the displayed percentage; instead of 17%, the calculated percent value would be something like 17.124%. Solved by rounding the percent down to two decimal places, to match what is displayed in the UI. 
 * Keyboard not coming back: With the code to automatically show the keyboard in the initial viewcontroller, after switching to the settings view, the keyboard would disappear when returning to the initial view. Solved by closing the keyboard before moving to the settings screen.
 * Tipster was coded as a quick prototype, so it lacks certain maintainability aspects. Were this a production app, here are some things I'd be keen to do:
 

@@ -8,25 +8,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tipPercentControl: UISegmentedControl!
 
     var settings: TipsterSettings? = nil;
-    var tipCalculator: TipCalculator? = nil;
     var keepKeyboardVisible = true;
+    var didLoadSelectedPercentIndex = false;
+    var maxTimeToSaveBill: Int = 10 * 60;
 
     override func viewDidLoad() {
         super.viewDidLoad();
-        loadSettings();
+        applySavedSettings();
         setTitleImage();
         clearBillAmount();
         preventKeyboardAnimations();
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        loadSettings();
+        applySavedSettings();
         keepKeyboardVisible = true;
         showTheKeyboard();
     }
 
-    func setTitleImage()
-    {
+    func setTitleImage() {
         let imageSize = CGRect(x: 0, y: 0, width: 60, height: 20);
 
         let titleView = UIImageView(frame: imageSize);
@@ -40,13 +40,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         billTextField.text = String();
     }
 
-    func showTheKeyboard()
-    {
+    func showTheKeyboard() {
         billTextField.becomeFirstResponder();
     }
 
-    func preventKeyboardAnimations()
-    {
+    func preventKeyboardAnimations() {
         billTextField.delegate = self;
     }
 
@@ -55,28 +53,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        // Disable animations.
+        // Disable keyboard sliding into view animation.
         UIView.setAnimationsEnabled(false);
     }
 
     func didShowKeyboard(_ notification: Notification) {
-        // Enable animations.
+        // Re-enable animations.
         UIView.setAnimationsEnabled(true);
     }
 
-    func getSettings()->TipsterSettings
-    {
+    func getSettings()->TipsterSettings {
         if(settings == nil)
         {
             settings = TipsterSettings();
-            loadSettings();
+            applySavedSettings();
         }
 
         return settings!;
     }
 
-    func getTipCalculator(appSettings: TipsterSettings!)->TipCalculator
-    {
+    func getTipCalculator(appSettings: TipsterSettings!)->TipCalculator {
         return TipCalculator(moodMultiplier: appSettings.getSelectedMoodValue());
     }
 
@@ -89,29 +85,40 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func onBillAmountChanged(_ sender: AnyObject) {
+        let appSettings = getSettings();
+        if let billText = billTextField.text {
+            persistBillText(appSettings: appSettings, billText: billText);
+        }
+
         calculateTip();
     }
 
-    func calculateTip()
-    {
+    func calculateTip() {
         let appSettings = getSettings();
 
-        tipCalculator = getTipCalculator(appSettings: appSettings);
-        let bill = decmialFromCurrencyString(withCurrencyString: billTextField.text!);
-        let tip = tipCalculator!.calculateTip(bill: bill, selectedTipIndex: tipPercentControl.selectedSegmentIndex);
+        let tipCalculator = getTipCalculator(appSettings: appSettings);
+        let bill = getBillAmount();
 
+        let tip = tipCalculator.calculateTip(bill: bill, selectedTipIndex: tipPercentControl.selectedSegmentIndex);
         let total = bill + tip;
+
         setCalculatedLabelText(tip: tip, total: total);
     }
 
-    func setCalculatedLabelText(tip: Decimal, total: Decimal)
-    {
+    func getBillAmount()->Decimal {
+        return decmialFromCurrencyString(withCurrencyString: billTextField.text!);
+    }
+
+    func persistBillText(appSettings: TipsterSettings, billText: String) {
+        appSettings.setBillText(toAmount: billText);
+    }
+
+    func setCalculatedLabelText(tip: Decimal, total: Decimal) {
         tipLabel.text = toCurrencyFormat(amount: tip);
         totalLabel.text = toCurrencyFormat(amount: total);
     }
 
-    func decmialFromCurrencyString(withCurrencyString: String)->Decimal
-    {
+    func decmialFromCurrencyString(withCurrencyString: String)->Decimal {
         let formatter = NumberFormatter();
         if let number = formatter.number(from: withCurrencyString) {
             return number.decimalValue;
@@ -123,26 +130,50 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func toCurrencyFormat(amount: Decimal)->String {
         let formatter = NumberFormatter();
         formatter.numberStyle = .currency;
-        if let formattedString = formatter.string(from: amount as NSNumber)
-        {
+        if let formattedString = formatter.string(from: amount as NSNumber) {
             return formattedString;
         }
 
         return String();
-
     }
 
-    func loadSettings()
-    {
+    func applySavedSettings() {
         let appSettings = getSettings();
         applySettingsValuesToUiControls(appSettings: appSettings);
         calculateTip();
     }
 
-    func applySettingsValuesToUiControls(appSettings: TipsterSettings)
-    {
-        tipPercentControl.selectedSegmentIndex = appSettings.getSelectedTipIndex();
+    func applySettingsValuesToUiControls(appSettings: TipsterSettings) {
+        if (!didLoadSelectedPercentIndex) {
+            // Only load on startup. If user goes into settings and changes the default index, it should not be reflected in this view.
+            tipPercentControl.selectedSegmentIndex = appSettings.getSelectedTipIndex();
+            didLoadSelectedPercentIndex = true;
+        }
+
         TipPercentChooser.updateDisplayedPercentages(tipPercentControl: tipPercentControl, appSettings: appSettings);
+        applyPersistedBillAmount(appSettings: appSettings);
+    }
+
+    func applyPersistedBillAmount(appSettings: TipsterSettings) {
+        let savedAt =  appSettings.getBillTextLastSavedAt();
+        print("Saved at \(savedAt)");
+        if (isYoungerThan(date: savedAt, timeIntervalInSeconds: maxTimeToSaveBill)) {
+            print("It's younger. Getting saved bill amount");
+            if let savedBillAmount = appSettings.getBillText() {
+                if (!savedBillAmount.isEmpty)
+                {
+                    print("Applying saved bill amount \(savedBillAmount)");
+                    billTextField.text = savedBillAmount;
+                }
+            }
+        }
+
+    }
+
+    func isYoungerThan(date: Date, timeIntervalInSeconds: Int)->Bool {
+        let difference = Date().timeIntervalSince(date);
+        print("Difference between now and the saved date: \(difference)");
+        return difference < TimeInterval(timeIntervalInSeconds);
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

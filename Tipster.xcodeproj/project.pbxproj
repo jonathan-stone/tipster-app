@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AB11B7601E64171900ED189D /* TipsterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB11B75F1E64171900ED189D /* TipsterSettings.swift */; };
 		AB11B7621E64219400ED189D /* TipsterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB11B75F1E64171900ED189D /* TipsterSettings.swift */; };
-		AB11B7641E64258F00ED189D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = AB11B7631E64258F00ED189D /* README.md */; };
 		AB1730D41E765BBE0070D602 /* tipster_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AB1730D11E765BBE0070D602 /* tipster_icon.png */; };
 		AB1730DF1E765C0E0070D602 /* tipster_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB1730DA1E765C0E0070D602 /* tipster_icon@2x.png */; };
 		AB1730E01E765C0E0070D602 /* tipster_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB1730DB1E765C0E0070D602 /* tipster_icon@3x.png */; };
@@ -311,7 +310,6 @@
 			files = (
 				AB11B7601E64171900ED189D /* TipsterSettings.swift in Sources */,
 				AB7191501E64015D00506F8A /* ViewController.swift in Sources */,
-				AB11B7641E64258F00ED189D /* README.md in Sources */,
 				AB1730E71E76798B0070D602 /* TipCalculator.swift in Sources */,
 				AB71914E1E64015D00506F8A /* AppDelegate.swift in Sources */,
 				AB71917C1E640D3400506F8A /* SettingsViewController.swift in Sources */,

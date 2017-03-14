@@ -27,7 +27,7 @@ The following **additional** features are implemented:
 - [x] Added **The Mood Slider**. 
 
 * Are you a very generous person? 20% tip not enough to communicate your blossoming sense of generosity?
-***Hit the Mood Slider*** to choose from 20 to 40% tips!
+***Hit the Mood Slider*** to choose from up to 50% tips!
 * In a crappy mood? 10% still too much tip to give out? You can probably calculate a zero percent tip on your own, but if you want to express your disdain with a nice low 2% tip, **the mood slider** will help you out there too. 
  
 
@@ -35,7 +35,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/Ad4LQfB.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/vIteaGE.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -44,6 +44,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ### Challenges
 * Rounding: When converting the mood slider value (a double) to percentages (17%/22% etc.), the results didn't land exactly on a whole percentage value. Rounding off for displaying the percent value was straightforward with string formatting, but then the Tip amount would not match the displayed percentage; instead of 17%, the calculated percent value would be something like 17.124%. Solved by rounding the percent down to two decimal places, to match what is displayed in the UI. 
 * Keyboard not coming back: With the code to automatically show the keyboard in the initial viewcontroller, after switching to the settings view, the keyboard would disappear when returning to the initial view. Solved by closing the keyboard before moving to the settings screen.
+* Changing the system locale doesn't change the bill amount text; if there's a decimal separator that doesn't apply to the new locale in the text, the tip won't be calculated. This could be fixed by detecting the locale change and translating the value accordingly, or just clearing out the bill text.
 * Tipster was coded as a quick prototype, so it lacks certain maintainability aspects. Were this a production app, here are some things I'd be keen to do:
 
     * Test-driven development: Test-first coding so that all code is tested all the time. 

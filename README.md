@@ -4,7 +4,7 @@
 
 Submitted by: **Jonathan Stone**
 
-Time spent: **8** hours spent in total
+Time spent: **12.5** hours spent in total
 
 ## User Stories
 
@@ -49,12 +49,10 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
     * Test-driven development: Test-first coding so that all code is tested all the time. 
     * Better encapsulation: I'd make TipPercentChooser into a component/control instead of a set of static functions.
-    * Better encapsulation: I'd separate the tip calculator code from the page nav code more completely.
+    * Better encapsulation: I'd separate the tip calculating code from the page navigation code more completely.
     * UI: I'd sure make it look a lot nicer.
     * Responsiveness: This thing only works on one screen size.
-    * UX: The mood slider can result in the same percentages appearing twice (e.g. 2%, 2%, 3%). Instead of a scale, I'd use predefined sets of percentages for a fixed number of "moods" or personality types (judmental, forgiving, ???).
-    * Bill splitter: support for number of people among which to divide up the bill. 
-    * Venmo Connectivity: I'd like to hook into Venmo to start a payment right from Tipster.
+    * UX: The mood slider can result in the same percentages appearing twice (e.g. 2%, 2%, 3%). Instead of a scale, I'd use predefined sets of percentages for a fixed number of "moods" or personality types (judmental, forgiving, ??).
 
 ## License
 

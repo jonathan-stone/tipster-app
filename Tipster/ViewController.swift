@@ -106,7 +106,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func getBillAmount()->Decimal {
-        return decmialFromCurrencyString(withCurrencyString: billTextField.text!);
+        return decimalFromCurrencyString(withCurrencyString: billTextField.text!);
     }
 
     func persistBillText(appSettings: TipsterSettings, billText: String) {
@@ -118,7 +118,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         totalLabel.text = toCurrencyFormat(amount: total);
     }
 
-    func decmialFromCurrencyString(withCurrencyString: String)->Decimal {
+    func decimalFromCurrencyString(withCurrencyString: String)->Decimal {
         let formatter = NumberFormatter();
         if let number = formatter.number(from: withCurrencyString) {
             return number.decimalValue;
